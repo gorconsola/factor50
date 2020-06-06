@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/backoffice', function () {
+    $content = file_get_contents(public_path('backoffice/index.html'));
+    return $content;
+});
