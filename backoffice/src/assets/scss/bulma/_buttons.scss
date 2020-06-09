@@ -1,0 +1,22 @@
+@import './_utils.scss';
+
+$button-border-width: 0;
+/*
+Not working after build
+ */
+//$button-padding-vertical: calc(4.5em - #{$button-border-width}) !default;
+$button-padding-horizontal: 0.75em;
+
+.button {
+  font-weight: 500;
+  height: auto !important;
+
+  ::v-deep span {
+    font-weight: 500;
+  }
+
+  &.is-tertiary {
+    box-shadow: $primary-box-shadow;
+    border: 1px solid #EAEDF0 !important;
+  }
+}

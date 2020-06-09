@@ -1,0 +1,48 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+// Import our Chimp color variables (maybe we can change this to another location? Like global.scss)
+@import "./all.scss";
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Cairo&display=swap');
+$family-primary: 'Cairo', sans-serif;
+
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Navbar
+$navbar-height: 3.5rem;
+
+// Menu
+$menu-item-color: $darkest-grey;
+$menu-label-font-size: 0.75em !important;
+$menu-list-border-left: none;
+$menu-item-active-color: inherit;
+$menu-item-active-background-color: transparent;
+
+// Update some of Bulma's component variables
+$control-border-width: 1px;
+
+$input-shadow: none;
+$input-focus-border-color: transparent;
+
+.b-checkbox.checkbox input[type=checkbox] + .check {
+  background-size: 65% !important;
+}
+
+.page-section {
+  padding: 0 2.5em 2em;
+
+  .columns {
+    height: 100%;
+  }
+
+  hr {
+    border-color: #CAD0D7;
+  }
+}
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";

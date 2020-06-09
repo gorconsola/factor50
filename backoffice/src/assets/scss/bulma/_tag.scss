@@ -1,0 +1,9 @@
+$tag-radius: 16px;
+
+.tag {
+  border-radius: $tag-radius !important;
+
+  &.small-radius {
+    border-radius: 2px !important;
+  }
+}

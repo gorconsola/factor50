@@ -1,0 +1,42 @@
+.images-modal-container {
+  .card {
+    width: calc(100vw - 3em);
+    min-height: 378px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+
+    .card-content {
+      overflow-y: scroll;
+
+      &.bottom-padding {
+        padding-bottom: 1em;
+      }
+
+      .b-tabs {
+        ::v-deep ul {
+          margin: 0;
+        }
+
+        ::v-deep .tab-content {
+          padding: 1em 0 0 0;
+        }
+      }
+    }
+  }
+  .modal-card-foot {
+    width: 100%;
+    justify-content: space-between;
+    border-radius: 0 0 4px 4px;
+    margin-top: auto;
+  }
+
+  .buttons {
+    width: 100%;
+    justify-content: center;
+
+    .button {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+// components
+@import './components/form';
+@import './components/modal';
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+
+main .section {
+  padding: 3rem 2.5rem;
+
+  &:first-of-type {
+    padding: 0rem 2.5rem 3rem;
+  }
+
+  .section {
+    &:first-of-type {
+      padding: 3rem 2.5rem;
+    } 
+  }
+}

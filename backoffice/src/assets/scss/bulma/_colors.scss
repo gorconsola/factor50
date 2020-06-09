@@ -1,0 +1,42 @@
+// Old colors
+$white: #fff;
+$red: #EE2E24;
+$dark-grey: #606060;
+$black: #000000;
+
+// New colors (Len's new design)
+$neutral: #209CEE;
+$neutral-light: #D9E9F8;
+$positive: #5ED079;
+$positive-light: #DFF6E4;
+$negative: #EF5850;
+$negative-light: #FCDEDC;
+$warning: #FBD73A;
+$warning-light: #FEF7D8;
+$action: #47C2C1;
+
+// All greys
+$off-black: #1F2223;
+$darkest-grey: #2C2E3C;
+$dark-grey: #637381;
+$grey: #96A2AF;
+$light-grey: #CAD0D7;
+$lighter-grey: #EAEDF0;
+$lightest-grey: #F4F6F8;
+
+// Buefy Colors :)
+$colors: (
+  "white": ($white, $black),
+  "black": ($black, $white),
+  "primary": ($neutral, $white),
+  "secondary": ($darkest-grey, $white),
+  "tertiary": ($white, $black),
+  "neutral-light": ($neutral-light, $neutral),
+  "success": ($positive, $white),
+  "success-light": ($positive-light, $positive),
+  "warning": ($warning, $warning-light),
+  "warning-light": ($warning-light, #D8B001), // uitzondering
+  "danger": ($negative, $white),
+  "danger-light": ($negative-light, $negative),
+  "grey": ($grey, $white)
+);

@@ -1,0 +1,11 @@
+@import './colors';
+
+$box-radius: 4px;
+$box-shadow: none;
+$box-text-align: center;
+
+.box {
+  border: 1px dashed $light-grey;
+  box-shadow: $box-shadow;
+  text-align: $box-text-align;
+}

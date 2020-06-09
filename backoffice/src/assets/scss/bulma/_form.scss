@@ -1,0 +1,44 @@
+.input {
+  padding: 11px 16px 13px 16px;
+  height: 3em;
+}
+
+.label {
+  font-size: 12px;
+}
+
+.upload {
+  width: 100%;
+  border-radius: none;
+}
+.upload-draggable {
+  width: 100%;
+  border-radius: none;
+}
+
+.filter-row {
+  .column {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.horizontal-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  
+  &.columns {
+    .form-elements {
+      flex: 2;
+      margin-bottom: 0;
+      width: 100% !important;
+    }
+  }
+
+  .button {
+    margin-bottom: 0;
+    margin-left: 1em;
+  }
+}
