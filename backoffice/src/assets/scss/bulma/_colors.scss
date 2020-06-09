@@ -4,8 +4,9 @@ $red: #EE2E24;
 $dark-grey: #606060;
 $black: #000000;
 
-// New colors (Len's new design)
-$neutral: #209CEE;
+
+// $neutral: #209CEE;
+$neutral: #2741fa;
 $neutral-light: #D9E9F8;
 $positive: #5ED079;
 $positive-light: #DFF6E4;
@@ -40,3 +41,5 @@ $colors: (
   "danger-light": ($negative-light, $negative),
   "grey": ($grey, $white)
 );
+
+

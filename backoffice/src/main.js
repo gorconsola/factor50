@@ -1,13 +1,21 @@
 import Vue from 'vue'
+import Buefy from 'buefy'
+import VeeValidate from 'vee-validate'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Buefy from 'buefy'
-import 'buefy/dist/buefy.css'
 
-Vue.use(Buefy)
+Vue.use(Buefy, {
+  defaultToastPosition: 'is-top',
+  defaultToastDuration: '3500'
+})
 
 Vue.config.productionTip = false
+
+Vue.use(VeeValidate, {
+  events: ''
+})
 
 new Vue({
   router,

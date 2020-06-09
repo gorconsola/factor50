@@ -1,17 +1,19 @@
 <template>
   <div class="authentication">
-    <div class="columns is=mobile no-margin">
-      <div class="column is-half is-offset-one-quarter">
-        <section class="section section--black">
-          <h1>SPF50</h1>
+    <section class="layout">
 
-          <slot name="header">
-            <h3>{{ title }}</h3>
-          </slot>
+      <header class="section">
+          <h1 class="title is-1">Factor50</h1>
+          <h3 class="subtitle is-3">{{ title }}</h3>
+      </header>
 
-        </section>
-      </div>
-    </div>
+      <section class="section form-section">
+        <slot name="form">
+          <h1>PUT YOUR FORM HERE...</h1>
+        </slot>
+      </section>
+
+    </section>
   </div>
 </template>
 
@@ -23,10 +25,29 @@ export default {
       type: String,
       required: true
     }
+  },
+  methods: {
+    login () {
+      console.log('clicked')
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  .authentication {
+    height: 100vh;
+  }
 
+  .layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    text-align: center;
+
+    h1 {
+      color: tomato;
+    }
+  }
 </style>

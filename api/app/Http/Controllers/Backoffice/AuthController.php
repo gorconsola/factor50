@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backoffice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 use App\User;
 use App\Http\Requests\Backoffice\RegisterRequest;
@@ -25,15 +26,32 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        $token = $this->guard()->attempt($credentials);
-        
-        if (! $token) {
-            return response()
-                ->json(['error' => 'login_error'], 401);
+
+        $user = User::with('userRole')->whereEmail($request->email)->first();
+
+        if (!$user) {
+            return response()->json([
+                'message' => 'Verkeerde emailadres of wachtwoord',
+                'status' => 422
+            ], 422);
         }
 
+        if (!Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'message' => 'Verkeerde emailadres of wachtwoord',
+                'status' => 422
+            ], 422);
+        }
+
+        $token = $this->guard()->attempt($credentials);
+
         return response()
-            ->json(['status' => 'success'], 200)
+            ->json([
+                'status' => 200,
+                'data' => [
+                    'token' => $token,
+                    'user' => $user
+                ]])
             ->header('Authorization', $token);
     }
 
