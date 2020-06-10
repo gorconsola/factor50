@@ -11,6 +11,7 @@
           :value="meta.per_page"
           class="per-page"
           @input="updatePageCount"
+          rounded
         >
           <option
             v-for="option in perPageOptions"
@@ -30,6 +31,7 @@
             v-if="hasPrev"
             @click="updatePage(meta.current_page - 1)"
           >
+            <!-- eslint-disable-next-line -->
             < Previous
           </li>
 
@@ -130,7 +132,7 @@ export default {
       const leftButtons = this.meta.current_page - this.extraButtons
       const rightButtons = this.meta.current_page + this.extraButtons + 1
 
-      let result = []
+      const result = []
 
       for (let i = leftButtons; i < rightButtons; i++) {
         result.push(i)

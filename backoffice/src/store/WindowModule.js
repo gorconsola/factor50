@@ -7,7 +7,7 @@ export const WindowModule = () => {
     namespaced: true,
     state () {
       return {
-        isMobile: true
+        isMobile: false
       }
     },
     mutations: {

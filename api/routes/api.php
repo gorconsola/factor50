@@ -25,7 +25,8 @@ Route::namespace('Backoffice')->group(function () {
     Route::prefix('auth')->group(function () {
         Route::post('register', 'AuthController@register');
         Route::post('login', 'AuthController@login');
-        Route::get('refresh', 'AuthController@refresh');
+        Route::get('forgot-password', 'AuthController@sendResetLinkEmail');
+        Route::get('reset-password', 'AuthController@resetPasswordRedirect')->name('password.reset');
 
         Route::group(['middleware' => 'auth:api'], function(){
             Route::get('me', 'AuthController@user');
@@ -34,7 +35,7 @@ Route::namespace('Backoffice')->group(function () {
     });
 
         Route::group(['middleware' => 'auth:api'], function(){
-            
+
             Route::get('users', 'UserController@index')
                 ->middleware('isAdmin');
             Route::get('users/{id}', 'UserController@show')

@@ -22,7 +22,7 @@ class AccountService extends HttpBaseService {
   logout = () => {
     this.secure = true
 
-    return this.executeRequest('/me/logout', 'GET')
+    return this.executeRequest('/auth/logout', 'POST')
       .finally(response => {
         store.commit('authentication/SET_TOKEN', '')
         store.commit('authentication/RESET_USER')
@@ -35,7 +35,7 @@ class AccountService extends HttpBaseService {
   requestPasswordResetLink = ({ email }) => {
     this.secure = false
 
-    return this.executeRequest(`/auth/password/email?email=${btoa(email)}`, 'GET')
+    return this.executeRequest(`/auth/forgot-password?email=${btoa(email)}`, 'GET')
   }
 
   resetPassword = (payload) => {
@@ -46,7 +46,7 @@ class AccountService extends HttpBaseService {
   getUser = () => {
     this.secure = true
 
-    return this.executeRequest('/me', 'GET')
+    return this.executeRequest('/auth/me', 'GET')
   }
 }
 

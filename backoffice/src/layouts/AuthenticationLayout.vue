@@ -37,19 +37,26 @@ export default {
 <style lang="scss" scoped>
   .authentication {
     height: 100vh;
+    background: #f6f8f9;  /* fallback for old browsers */
+    background-image: linear-gradient(73deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 1));
   }
 
   .layout {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     height: 100%;
+    max-height: 600px;
     text-align: center;
-    background: #f6f8f9;  /* fallback for old browsers */
-    background-image: linear-gradient(73deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 1));
 
     h1 {
       color: tomato;
+    }
+
+    .form-section {
+      width: 100%;
+      max-width: 500px
     }
   }
 </style>

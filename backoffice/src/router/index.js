@@ -6,18 +6,18 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: () => import(/* webpackChunkName: "login" */ '../views/auth/Login.vue')
   },
 
   {
     path: '/forgot-password',
-    name: 'ForgotPassword',
+    name: 'forgot-password',
     component: () => import(/* webpackChunkName: "login" */ '../views/auth/ForgotPassword.vue')
   },
 
   {
-    path: '/dashboard',
+    path: '/',
     name: 'dashboard',
     component: () => import(/* webpackChunkName: "login" */ '../views/Dashboard.vue')
   },
@@ -25,7 +25,13 @@ const routes = [
   {
     path: '/projects',
     name: 'projects',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Projects.vue')
+    component: () => import(/* webpackChunkName: "login" */ '../views/projects/Projects.vue')
+  },
+
+  {
+    path: '/projects/new',
+    name: 'create-project',
+    component: () => import(/* webpackChunkName: "login" */ '../views/projects/CreateProject.vue')
   }
 
 ]

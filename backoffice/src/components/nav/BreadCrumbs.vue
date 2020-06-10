@@ -54,6 +54,7 @@ export default {
     padding-right: 3px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    cursor: pointer;
 
     &:before {
       margin-right: 3px;

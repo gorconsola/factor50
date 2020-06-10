@@ -3,18 +3,17 @@ export default [
     component: 'b-menu-list',
     menuItems: [
       {
-        icon: 'speedometer',
+        icon: 'monitor-dashboard',
         label: 'Dashboard',
         tag: 'router-link',
         to: 'dashboard',
         exact: true
       },
       {
-        icon: 'file-tree',
+        icon: 'flask-outline',
         label: 'Projects',
         tag: 'router-link',
-        to: 'projects',
-        exact: true
+        to: 'projects'
       }
     ]
   }

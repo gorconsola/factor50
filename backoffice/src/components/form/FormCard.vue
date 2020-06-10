@@ -29,17 +29,19 @@
           </slot>
         </div>
 
-        <template v-slot:buttons>
-          <div class="buttons-container">
-            <b-button
-              type="is-primary"
-              native-type="submit"
-              :loading="loading"
-              :disabled="!hasChanges"
-            >
-              Save
-            </b-button>
-          </div>
+        <template v-slot:buttons v-if="!hideButtons">
+          <slot name="buttons" :hasChanges="hasChanges" :loading="loading">
+            <div class="buttons-container">
+              <b-button
+                type="is-primary"
+                native-type="submit"
+                :loading="loading"
+                :disabled="!hasChanges"
+              >
+                Save
+              </b-button>
+            </div>
+          </slot>
         </template>
       </form-wrapper>
     </template>
@@ -52,7 +54,7 @@ import FormWrapper from '@/components/form/FormWrapper.vue'
 import FormGenerator from '@/components/form/FormGenerator.vue'
 
 export default {
-	name: 'FormCard',
+  name: 'FormCard',
   components: {
     Card,
     FormWrapper,
@@ -76,6 +78,10 @@ export default {
       default: false
     },
     showLoader: {
+      type: Boolean,
+      default: false
+    },
+    hideButtons: {
       type: Boolean,
       default: false
     }

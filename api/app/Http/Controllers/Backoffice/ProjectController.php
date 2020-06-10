@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backoffice;
 use App\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Filters\ProjectFilters;
+use App\Http\Resources\Projects\ProjectListingResourceCollection;
 
 class ProjectController extends Controller
 {
@@ -13,11 +15,20 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, ProjectFilters $filters)
     {
-        $project = Project::with('user.userRole', 'tasks', 'address')->get();
+        $query = Project::with('user.userRole', 'tasks', 'address')
+            ->filter($filters);
         
-        return response()->json($project);
+        $perPage = 15;
+
+        if ($request->has('per_page')) {
+            $perPage = $request->per_page;
+        }
+
+        $projects = $query->paginate($perPage);
+        
+        return new ProjectListingResourceCollection($projects);
     }
 
 

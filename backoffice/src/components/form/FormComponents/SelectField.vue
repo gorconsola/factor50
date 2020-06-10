@@ -27,6 +27,7 @@
         :expanded="expanded"
         @input="handleInput"
         @blur="$emit('blur')"
+        rounded
       >
 
         <option

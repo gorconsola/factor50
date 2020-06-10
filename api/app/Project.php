@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
+    use Filterable;
+
     protected $hidden = ['created_at', 'updated_at'];
     protected $guarded = ['id', 'created_at', 'updated_at'];
 

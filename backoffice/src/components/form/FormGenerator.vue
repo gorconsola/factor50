@@ -1,5 +1,5 @@
 <template>
-  <div class="form-elements columns">
+  <div class="form-elements columns is-multiline">
 
     <component
       :is="field.fieldType"

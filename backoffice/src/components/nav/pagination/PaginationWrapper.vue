@@ -3,7 +3,7 @@ import queryStringMixin from '@/components/http/QueryStringMixin.js'
 
 export default {
   name: 'PaginationWrapper',
-  mixins: [ queryStringMixin ],
+  mixins: [queryStringMixin],
   props: {
     meta: {
       type: Object

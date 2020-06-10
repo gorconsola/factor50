@@ -6,7 +6,7 @@ export default [
     placeholder: 'dinkie@spf50.com',
     label: 'Email',
     rules: 'required|email',
-    rounded: true
+    class: 'is-full'
   },
   {
     fieldType: 'InputField',
@@ -15,6 +15,6 @@ export default [
     placeholder: '****',
     label: 'Password',
     rules: 'required',
-    rounded: true
+    class: 'is-full'
   }
 ]

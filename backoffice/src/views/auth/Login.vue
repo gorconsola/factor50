@@ -19,7 +19,7 @@
             <div class="buttons is-justified-center">
               <router-link
                 class="is-danger link"
-                :to="{ name: 'ForgotPassword' }"
+                :to="{ name: 'forgot-password' }"
               >
                 Forgot password?
               </router-link>

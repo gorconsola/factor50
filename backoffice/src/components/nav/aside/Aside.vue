@@ -73,7 +73,6 @@ export default {
   flex-direction: column;
   padding-top: 3.5em;
   box-shadow: $primary-box-shadow;
-  transform: translateX(calc(-100% + 24px));
 
   &.primary {
     z-index: 9;

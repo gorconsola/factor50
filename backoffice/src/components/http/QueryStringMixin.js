@@ -2,7 +2,7 @@ const queryStringMixin = () => {
   return {
     methods: {
       updateQueryString (key, value) {
-        let query = Object.assign({}, this.$route.query)
+        const query = Object.assign({}, this.$route.query)
 
         if (!value) {
           delete query[key]
@@ -10,7 +10,7 @@ const queryStringMixin = () => {
           query[key] = value
         }
 
-        this.$router.replace({ query }).catch(err => {})
+        this.$router.replace({ query }).catch(err => console.error(err))
       },
       createQueryStringFromObject (queryObject) {
         let queryString = ''

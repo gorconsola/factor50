@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 use App\User;
 use App\Http\Requests\Backoffice\RegisterRequest;
@@ -31,14 +32,14 @@ class AuthController extends Controller
 
         if (!$user) {
             return response()->json([
-                'message' => 'Verkeerde emailadres of wachtwoord',
+                'message' => 'Wrong email or password',
                 'status' => 422
             ], 422);
         }
 
         if (!Hash::check($request->password, $user->password)) {
             return response()->json([
-                'message' => 'Verkeerde emailadres of wachtwoord',
+                'message' => 'Wrong email or password',
                 'status' => 422
             ], 422);
         }
@@ -56,6 +57,39 @@ class AuthController extends Controller
     }
 
 
+    public function sendResetLinkEmail (Request $request)
+    {
+        $email = $request->only('email')['email'];
+        $email = base64_decode($email);
+
+        $credentials = ['email' => $email];
+
+        $response = Password::sendResetLink($credentials);
+
+        return $response === Password::RESET_LINK_SENT
+            ? response()->json([
+                'message' => 'Reset link sent to your email.',
+                'status' => 201
+            ], 201)
+            : response()->json([
+                'message' => 'Unable to send reset link',
+                'status' => 401
+            ], 401);
+    }
+
+
+    /**
+     * Reset Redirect
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function passwordResetRedirect(Request $request)
+    {
+        $token = str_replace('=', '', $request->getQueryString());
+        return redirect(config('backoffice.url') . '#/reset/' . $token);
+    }
+
+
     public function logout()
     {
         $this->guard()->logout();
@@ -69,7 +103,7 @@ class AuthController extends Controller
 
     public function user(Request $request)
     {
-        $user = User::find(Auth::user()->id);
+        $user = User::with('userRole')->find(Auth::user()->id);
 
         return response()->json([
             'status' => 'success',
