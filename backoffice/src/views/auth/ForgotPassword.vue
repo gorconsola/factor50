@@ -1,8 +1,8 @@
 <template>
-  <authentication-layout title="Login">
+  <authentication-layout title="Forgot Password">
     <template v-slot:form>
       <api-wrapper
-        endpoint="accountService.login"
+        endpoint="accountService.requestPasswordResetLink"
         @success="handleRouting"
       >
         <form-wrapper
@@ -19,9 +19,9 @@
             <div class="buttons is-justified-center">
               <router-link
                 class="is-danger link"
-                :to="{ name: 'requestReset' }"
+                :to="{ name: 'Login' }"
               >
-                Forgot password?
+                Back to login
               </router-link>
 
               <b-button
@@ -31,7 +31,7 @@
                 rounded
                 :loading="loading"
               >
-                Login
+                Send reset link
                 <b-icon
                   icon="arrow-right"
                   size="is-small"
@@ -44,6 +44,7 @@
       </api-wrapper>
     </template>
   </authentication-layout>
+  <!-- eslint-disable-next-line -->
 </template>
 
 <script>
@@ -51,10 +52,10 @@ import AuthenticationLayout from '@/layouts/AuthenticationLayout'
 import FormGenerator from '@/components/form/FormGenerator.vue'
 import FormWrapper from '@/components/form/FormWrapper.vue'
 import ApiWrapper from '@/components/http/ApiWrapper.js'
-import loginSchema from '@/helpers/schemas/loginSchema'
+import requestResetSchema from '@/helpers/schemas/requestResetSchema'
 
 export default {
-  name: 'Login',
+  name: 'ForgotPassword',
   components: {
     AuthenticationLayout,
     FormGenerator,
@@ -67,12 +68,12 @@ export default {
         email: '',
         password: ''
       },
-      schema: loginSchema
+      schema: requestResetSchema
     }
   },
   methods: {
     handleRouting () {
-      this.$router.push({ name: 'Dashboard' })
+      this.$router.push({ name: 'ResetPassword' })
     }
   }
 }

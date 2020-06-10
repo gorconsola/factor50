@@ -15,7 +15,7 @@ export default {
   },
   data () {
     return {
-      data: {},
+      data: [],
       columns: [],
       filters: {},
       meta: null,
@@ -41,7 +41,7 @@ export default {
         this.error = null
 
         if (method !== 'read') {
-          this.$emit(`success`, response)
+          this.$emit('success', response)
         }
 
         this.loading = false
@@ -53,7 +53,7 @@ export default {
         this.filters = null
         this.error = error.data
 
-        this.$emit(`error`, error)
+        this.$emit('error', error)
         this.loading = false
         this.handleError()
       }
@@ -68,7 +68,6 @@ export default {
       return this.sendRequest(`${this.endpoint}/${this.resourceId}`, 'read')
     },
     update (payload, id = false) {
-      console.log(`UPDATE`, `${this.endpoint}/${id || this.resourceId}`)
       return this.sendRequest(`${this.endpoint}/${id || this.resourceId}`, 'update', payload)
         .then(response => {
           this.$emit('updated')

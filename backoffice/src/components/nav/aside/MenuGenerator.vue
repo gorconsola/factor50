@@ -85,7 +85,7 @@ export default {
 
   .menu-list {
     font-weight: 400;
-    color: $darkest-grey;
+    color: $white;
     letter-spacing: 0.2px;
 
     li {
@@ -110,11 +110,11 @@ export default {
           left: 0;
           top: 50%;
           transform: translateY(-50%);
-          color: $dark-grey;
+          color: $white;
         }
 
         a {
-          color: $dark-grey;
+          color: $white;
           font-weight: 400;
           padding-left: 2em;
 

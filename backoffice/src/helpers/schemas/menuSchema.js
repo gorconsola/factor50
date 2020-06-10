@@ -1,7 +1,6 @@
 export default [
   {
     component: 'b-menu-list',
-    label: 'Main menu',
     menuItems: [
       {
         icon: 'speedometer',

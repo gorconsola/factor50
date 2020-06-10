@@ -82,7 +82,7 @@ export default {
   cursor: pointer;
 
   .user__profile {
-    background-color: #2A2D2E;
+    background-color: $white;
     padding: 0 1.5em;
     width: 240px;
     height: 3.5em;
@@ -96,7 +96,8 @@ export default {
     .pf {
       width: 2em;
       height: 2em;
-      background-color: $negative;
+      background-color: tomato;
+      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -108,15 +109,12 @@ export default {
       display: flex;
       flex-direction: column;
       font-size: 14px;
-
       .role {
-        opacity: .5;
         font-size: 10px;
       }
     }
 
     .chevron {
-      color: #fff;
       font-size: 10px;
       transform-origin: center;
       transition: 125ms transform;
@@ -125,7 +123,7 @@ export default {
 
   .user__logout {
     height: 3.5em;
-    background-color: #1F2223;
+    background-color: $white;
     display: flex;
     align-items: center;
     padding: 0 1.5em;

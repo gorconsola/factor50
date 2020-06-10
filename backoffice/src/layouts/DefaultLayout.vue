@@ -2,11 +2,6 @@
   <div class="default-layout">
     <navbar :secondary="!!secondaryMenuSchema.length" />
     <side-nav :menu-schema="menuSchema" />
-    <side-nav
-      v-if="!!secondaryMenuSchema.length"
-      :menu-schema="secondaryMenuSchema"
-      type="secondary"
-    />
     <main :class="{'menu-open': menuOpen, 'fixed-width': isMobile , 'secondary-menu-active': !!secondaryMenuSchema.length }">
       <slot name="breadcrumbs">
         <bread-crumbs base-crumb="dashboard" />
@@ -58,9 +53,9 @@ export default {
   main {
     min-height: 100vh;
     transition: 250ms all ease-out;
-    background-color: #f6f8f9;
-    padding-top: 3.5em;
+    background-color: #edf2f6;
     width: 100%;
+    padding-top: 3rem;
     margin-left: 24px; // safe 24px for toggle
     overflow: hidden;
 

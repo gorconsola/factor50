@@ -5,8 +5,8 @@
 @import "./all.scss";
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Cairo&display=swap');
-$family-primary: 'Cairo', sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+$family-primary: 'Ubuntu', sans-serif;
 
 $widescreen-enabled: false;
 $fullhd-enabled: false;
@@ -15,8 +15,8 @@ $fullhd-enabled: false;
 $navbar-height: 3.5rem;
 
 // Menu
-$menu-item-color: $darkest-grey;
-$menu-label-font-size: 0.75em !important;
+$menu-item-color: $white;
+$menu-label-font-size: 1em !important;
 $menu-list-border-left: none;
 $menu-item-active-color: inherit;
 $menu-item-active-background-color: transparent;

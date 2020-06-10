@@ -1,18 +1,18 @@
 <template>
-  <nav
-    id="navbar-main"
-    class="navbar is-fixed-top"
-    :class="{'menu-open': menuOpen}"
-  >
-    <aside-header class="is-hidden-mobile" />
-    <div class="navbar-menu">
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <user-component />
+    <nav
+      id="navbar-main"
+      class="navbar is-fixed-top"
+      :class="{'menu-open': menuOpen}"
+    >
+      <aside-header class="is-hidden-mobile" />
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <user-component />
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 </template>
 
 <script>
@@ -48,12 +48,5 @@ export default {
   -moz-box-shadow: 0px 10px 34px -18px rgba(0,0,0,0.07);
   box-shadow: 0px 10px 34px -18px rgba(0,0,0,0.07);
   transition: margin-left 250ms ease-out, transform 250ms ease-out;
-  background-color: $off-black   !important;
-}
-
-.navbar-menu {
-  .navbar-item {
-    color: $white;
-  }
 }
 </style>

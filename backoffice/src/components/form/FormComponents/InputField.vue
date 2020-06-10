@@ -23,7 +23,7 @@
         :type="type"
         :value="value"
         :placeholder="placeholder"
-        :rounded="rounded"
+        rounded
         @input="handleInput"
         @blur="$emit('blur')" />
 
@@ -46,8 +46,7 @@ export default {
     'placeholder',
     'horizontal',
     'rules',
-    'classes',
-    'rounded'
+    'classes'
   ],
   methods: {
     handleInput (value) {

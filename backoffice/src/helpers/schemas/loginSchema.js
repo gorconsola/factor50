@@ -3,7 +3,7 @@ export default [
     fieldType: 'InputField',
     name: 'email',
     type: 'text',
-    placeholder: 'Je email',
+    placeholder: 'dinkie@spf50.com',
     label: 'Email',
     rules: 'required|email',
     rounded: true
@@ -13,7 +13,7 @@ export default [
     name: 'password',
     type: 'password',
     placeholder: '****',
-    label: 'Wachtwoord',
+    label: 'Password',
     rules: 'required',
     rounded: true
   }

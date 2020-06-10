@@ -3,8 +3,8 @@
     <section class="layout">
 
       <header class="section">
-          <h1 class="title is-1">Factor50</h1>
-          <h3 class="subtitle is-3">{{ title }}</h3>
+        <logo />
+        <h3 class="subtitle is-5">{{ title }}</h3>
       </header>
 
       <section class="section form-section">
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import Logo from '@/components/logo/Logo.vue'
+
 export default {
   name: 'AuthenticationLayout',
   props: {
@@ -26,10 +28,8 @@ export default {
       required: true
     }
   },
-  methods: {
-    login () {
-      console.log('clicked')
-    }
+  components: {
+    Logo
   }
 }
 </script>
@@ -45,6 +45,8 @@ export default {
     justify-content: space-between;
     height: 100%;
     text-align: center;
+    background: #f6f8f9;  /* fallback for old browsers */
+    background-image: linear-gradient(73deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 1));
 
     h1 {
       color: tomato;

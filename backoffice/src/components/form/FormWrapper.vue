@@ -26,7 +26,7 @@ export default {
         }
 
         this.$buefy.toast.open({
-          message: 'Je hebt niet alles goed ingevuld!',
+          message: 'You made a mistake!',
           type: 'is-danger'
         })
       })
