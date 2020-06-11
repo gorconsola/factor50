@@ -50,6 +50,6 @@ export default {
 
 <style lang="scss" scoped>
   .filter-row {
-    background: #eeeeee;
+    background: rgba(237,242,246,0.5);
   }
 </style>

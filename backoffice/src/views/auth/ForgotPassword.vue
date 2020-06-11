@@ -19,7 +19,7 @@
             <div class="buttons is-justified-center">
               <router-link
                 class="is-danger link"
-                :to="{ name: 'Login' }"
+                :to="{ name: 'login' }"
               >
                 Back to login
               </router-link>

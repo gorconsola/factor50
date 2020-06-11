@@ -9,7 +9,7 @@
             :to="`${$route.path}/new`"
             rounded
           >
-            Add new
+            Create new
           </b-button>
         <slot name="extra-buttons">
         </slot>

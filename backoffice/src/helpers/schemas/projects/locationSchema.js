@@ -58,7 +58,8 @@ export default [
     name: 'house_number_addition',
     type: 'text',
     placeholder: 'III',
-    label: 'Addition'
+    label: 'Addition',
+    rules: ''
   },
   {
     fieldType: 'InputField',

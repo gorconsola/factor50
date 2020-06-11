@@ -1,6 +1,6 @@
 <template>
   <div class="authentication">
-    <section class="layout">
+    <section class="layout" :class="{ 'isMobile': isMobile }">
 
       <header class="section">
         <logo />
@@ -30,6 +30,11 @@ export default {
   },
   components: {
     Logo
+  },
+  computed: {
+    isMobile () {
+      return this.$store.state.window.isMobile
+    }
   }
 }
 </script>
@@ -49,6 +54,10 @@ export default {
     height: 100%;
     max-height: 600px;
     text-align: center;
+
+    &.isMobile {
+      max-height: 100%;
+    }
 
     h1 {
       color: tomato;

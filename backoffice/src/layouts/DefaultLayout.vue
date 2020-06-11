@@ -49,6 +49,7 @@ export default {
 <style lang="scss" scoped>
 .default-layout {
   min-height: 100vh;
+  background-color: #edf2f6;
 
   main {
     min-height: 100vh;

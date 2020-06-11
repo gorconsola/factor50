@@ -1,8 +1,9 @@
 <template>
   <div class="label-container">
     <span v-if="!!label">{{ label }}</span>
-    <span v-if="!!rules" class="label-container__optional">
+    <span class="label-container__optional">
       <span v-for="(rule, index) in parsedRules" :key="index">{{ rule }}</span>
+      <span v-if="isOptional">Optional</span>
     </span>
   </div>
 </template>
@@ -30,6 +31,20 @@ export default {
   computed: {
     parsedRules () {
       return this.rules && this.parseRules(this.rules)
+    },
+    isOptional () {
+      const type = typeof this.rules
+
+      switch (type) {
+        case 'object':
+          return !!this.rules.required
+
+        case 'string':
+          return !this.rules.includes('required')
+
+        default:
+          return false
+      }
     }
   },
   methods: {
