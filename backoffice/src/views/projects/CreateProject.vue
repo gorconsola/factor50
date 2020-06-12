@@ -11,14 +11,15 @@
         <template>
 
           <div class="card-container">
+
             <form-card
               title="Project Details"
               :schema="newProjectSchema"
               :formData.sync="formData"
-              :hideButtons="true" />
+              @submit="createProject" />
 
           </div>
-
+<!--
           <div class="card-container">
             <form-card
               title="Contact details"
@@ -27,6 +28,15 @@
               :hideButtons="true" />
 
           </div>
+
+         <div class="card-container">
+            <form-card
+              title="Project Template"
+              :schema="locationSchema"
+              :formData.sync="formData"
+              :hideButtons="true" />
+
+          </div> -->
 
         </template>
       </section>
@@ -57,7 +67,8 @@ export default {
       newProjectSchema: newProjectSchema,
       formData: {
         project: {
-          title: ''
+          title: '',
+          template: ''
         },
         address: {
           first_name: '',
@@ -75,6 +86,14 @@ export default {
     }
   },
   methods: {
+    createProject () {
+      this.$router.push(
+        {
+          name: 'project',
+          params: { id: 'test-project' }
+        }
+      )
+    },
     handleSubmit (payload) {
       this.$refs.crudWrapper.create(payload)
         .then(response => {

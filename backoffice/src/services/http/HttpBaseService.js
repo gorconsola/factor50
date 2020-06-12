@@ -27,7 +27,7 @@ export default class HttpBaseService {
   executeRequest (url, method, data, secure = this.secure, requestedResponseType = 'json') {
     const options = {
       headers: {
-        'Accept': `application/${this.API_VERSION}+json`,
+        Accept: `application/${this.API_VERSION}+json`,
         'Content-Type': 'application/json'
       },
       method: method,
@@ -84,6 +84,7 @@ export default class HttpBaseService {
   }
 
   getResponseHeader (headerName) {
+    // eslint-disable-next-line
     if (this.lastRequestResponseHeaders.hasOwnProperty(headerName)) {
       return this.lastRequestResponseHeaders[headerName]
     }

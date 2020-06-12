@@ -2,6 +2,11 @@
   <div class="default-layout">
     <navbar :secondary="!!secondaryMenuSchema.length" />
     <side-nav :menu-schema="menuSchema" />
+    <side-nav
+      v-if="!!secondaryMenuSchema.length"
+      :menu-schema="secondaryMenuSchema"
+      type="secondary"
+    />
     <main :class="{'menu-open': menuOpen, 'fixed-width': isMobile , 'secondary-menu-active': !!secondaryMenuSchema.length }">
       <slot name="breadcrumbs">
         <bread-crumbs base-crumb="dashboard" />
@@ -58,6 +63,7 @@ export default {
     width: 100%;
     max-width: 1200px;
     padding-top: 3rem;
+    margin-left: 24px; // safe 24px for toggle
     overflow: hidden;
 
     &.secondary-menu-active {

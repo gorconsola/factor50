@@ -3,6 +3,10 @@
     class="aside"
     :class="[{ 'menu-open': menuOpen }, type]"
   >
+    <nav-toggle-arrow
+      v-if="type !== 'secondary'"
+      class="nav-toggle-arrow"
+    />
     <menu-generator :schema="menuSchema" />
     <menu-generator
       v-if="type !== 'secondary'"
@@ -15,11 +19,13 @@
 <script>
 import footerSchema from '@/helpers/schemas/footerSchema.js'
 import MenuGenerator from '@/components/nav/aside/MenuGenerator'
+import NavToggleArrow from '@/components/nav/NavToggleArrow'
 
 export default {
   name: 'Aside',
   components: {
-    MenuGenerator
+    MenuGenerator,
+    NavToggleArrow
   },
   props: {
     menuSchema: {
@@ -68,20 +74,28 @@ export default {
   background-color: #2d3747;
   z-index: 3;
   transition: .5s;
-  transition: transform 250ms ease-out;
+  transition: all 250ms ease-out;
   display: flex;
   flex-direction: column;
   padding-top: 3.5em;
+  padding-right: 20px;
   box-shadow: $primary-box-shadow;
+  transform: translateX(calc(-100% + 24px));
 
   &.primary {
     z-index: 9;
   }
 
   &.secondary {
-    background-color: $lighter-grey !important;
-    left: 244px;
+    width: 220px;
+    background-color: rgba(45,55,71,0.9);
+    left: 220px;
     padding-left: 20px;
+    padding-right: 0;
+
+    &.menu-open {
+      padding-left: 44px;
+    }
   }
 
   &.menu-open {

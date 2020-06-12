@@ -17,17 +17,15 @@
         ref="formWrapper"
         @submit="handleSubmit"
       >
-        <div class="card-content">
-          <slot :updateForm="updateForm">
+        <slot :updateForm="updateForm">
 
-            <form-generator
-              ref="formGenerator"
-              :value="formData"
-              @input="updateForm"
-              :schema="schema" />
+          <form-generator
+            ref="formGenerator"
+            :value="formData"
+            @input="updateForm"
+            :schema="schema" />
 
-          </slot>
-        </div>
+        </slot>
 
         <template v-slot:buttons v-if="!hideButtons">
           <slot name="buttons" :hasChanges="hasChanges" :loading="loading">

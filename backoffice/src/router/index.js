@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { authenticationGuard } from '@/router/routerGuards'
 
 Vue.use(VueRouter)
 
@@ -19,19 +20,29 @@ const routes = [
   {
     path: '/',
     name: 'dashboard',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Dashboard.vue')
+    component: () => import(/* webpackChunkName: "login" */ '../views/Dashboard.vue'),
+    beforeEnter: (to, from, next) => authenticationGuard(to, from, next)
   },
 
   {
     path: '/projects',
     name: 'projects',
-    component: () => import(/* webpackChunkName: "login" */ '../views/projects/Projects.vue')
+    component: () => import(/* webpackChunkName: "login" */ '../views/projects/Projects.vue'),
+    beforeEnter: (to, from, next) => authenticationGuard(to, from, next)
   },
 
   {
     path: '/projects/new',
     name: 'create-project',
-    component: () => import(/* webpackChunkName: "login" */ '../views/projects/CreateProject.vue')
+    component: () => import(/* webpackChunkName: "login" */ '../views/projects/CreateProject.vue'),
+    beforeEnter: (to, from, next) => authenticationGuard(to, from, next)
+  },
+
+  {
+    path: '/projects/:id',
+    name: 'project',
+    component: () => import(/* webpackChunkName: "login" */ '../views/projects/ProjectDetail.vue'),
+    beforeEnter: (to, from, next) => authenticationGuard(to, from, next)
   }
 
 ]

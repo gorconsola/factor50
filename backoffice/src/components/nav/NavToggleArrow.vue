@@ -4,7 +4,10 @@
     :class="{'is-open': menuOpen}"
     @click="toggleMenu"
   >
-    <i class="mdi arrow-right" />
+    <b-icon
+      class="arrow"
+      icon="arrow-right"
+      size="is-small" />
   </div>
 </template>
 
@@ -46,13 +49,19 @@ export default {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  i {
+  z-index: 2;
+
+  .arrow {
     color: $grey;
     transition: 125ms transform;
+
+    &:hover {
+      color: tomato;
+    }
   }
 
   &.is-open {
-    i {
+    .arrow {
       transform: rotate(180deg);
     }
   }
