@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Backoffice;
 
 use App\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Filters\ProjectFilters;
+use App\Http\Requests\Backoffice\ProjectRequest;
 use App\Http\Resources\Projects\ProjectListingResourceCollection;
+use App\Http\Resources\Projects\ProjectDetailResource;
 
 class ProjectController extends Controller
 {
@@ -17,7 +20,7 @@ class ProjectController extends Controller
      */
     public function index(Request $request, ProjectFilters $filters)
     {
-        $query = Project::with('user.userRole', 'tasks', 'address')
+        $query = Project::complete()
             ->filter($filters);
         
         $perPage = 15;
@@ -38,9 +41,17 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $user = Auth::user();
+
+        $project = new Project();
+        $project->name = $validated['name'];
+        $project->user_id = $user->id;
+        $project->save();
+
+        return new ProjectDetailResource($project);
     }
 
     /**
@@ -49,9 +60,11 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        //
+        $project = Project::complete()->findOrFail($id);
+
+        return new ProjectDetailResource($project);
     }
 
 
@@ -64,7 +77,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+
     }
 
     /**

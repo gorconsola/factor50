@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { authenticationGuard } from '@/router/routerGuards'
 
+import projectRoutes from '@/router/projectRoutes'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,27 +25,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "login" */ '../views/Dashboard.vue'),
     beforeEnter: (to, from, next) => authenticationGuard(to, from, next)
   },
-
-  {
-    path: '/projects',
-    name: 'projects',
-    component: () => import(/* webpackChunkName: "login" */ '../views/projects/Projects.vue'),
-    beforeEnter: (to, from, next) => authenticationGuard(to, from, next)
-  },
-
-  {
-    path: '/projects/new',
-    name: 'create-project',
-    component: () => import(/* webpackChunkName: "login" */ '../views/projects/CreateProject.vue'),
-    beforeEnter: (to, from, next) => authenticationGuard(to, from, next)
-  },
-
-  {
-    path: '/projects/:id',
-    name: 'project',
-    component: () => import(/* webpackChunkName: "login" */ '../views/projects/ProjectDetail.vue'),
-    beforeEnter: (to, from, next) => authenticationGuard(to, from, next)
-  }
+  ...projectRoutes
 
 ]
 

@@ -24,12 +24,12 @@ class CreateProjectsTable extends Migration
                 ->onDelete('cascade')
                 ->nullable();
             
-            $table->unsignedInteger('address_id');
+            $table->unsignedInteger('address_id')
+                ->nullable();
             $table->foreign('address_id')
                 ->references('id')
                 ->on('addresses')
-                ->onDelete('cascade')
-                ->nullable();
+                ->onDelete('cascade');
 
             $table->longText('safety_plan')->nullable();
             $table->enum('status', ['open', 'closed']);

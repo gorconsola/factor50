@@ -5,7 +5,7 @@
     <crud-wrapper
       ref="crudWrapper"
       identifier="productId"
-      endpoint="new-products"
+      endpoint="projects"
     >
       <section class="page-section form-cards-container">
         <template>
@@ -15,8 +15,8 @@
             <form-card
               title="Project Details"
               :schema="newProjectSchema"
-              :formData.sync="formData"
-              @submit="createProject" />
+              :formData.sync="formData.project"
+              @submit="handleSubmit" />
 
           </div>
 <!--
@@ -67,40 +67,29 @@ export default {
       newProjectSchema: newProjectSchema,
       formData: {
         project: {
-          title: '',
-          template: ''
-        },
-        address: {
-          first_name: '',
-          last_name: '',
-          email: '',
-          phone: '',
-          street: '',
-          house_number: '',
-          house_number_addition: '',
-          postal_code: '',
-          city: '',
-          country: ''
+          name: '',
+          project_template: ''
         }
       }
     }
   },
   methods: {
     createProject () {
-      this.$router.push(
-        {
-          name: 'project',
-          params: { id: 'test-project' }
-        }
-      )
     },
     handleSubmit (payload) {
       this.$refs.crudWrapper.create(payload)
         .then(response => {
-          this.handleSuccess()
+          this.handleSuccess(response.data)
         })
     },
-    handleSuccess () {
+    handleSuccess (project) {
+      this.$router.push(
+        {
+          name: 'details',
+          params: { projectId: `${project.id}` }
+        }
+      )
+
       this.$buefy.toast.open({
         message: 'New project saved',
         type: 'is-primary'
@@ -111,7 +100,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .card-container {
-    margin-bottom: 2rem;
+  .form-cards-container {
+    .card-container {
+      margin-bottom: 2rem;
+    }
   }
 </style>

@@ -61,7 +61,6 @@ export default {
     transition: 250ms all ease-out;
     background-color: #edf2f6;
     width: 100%;
-    max-width: 1200px;
     padding-top: 3rem;
     margin-left: 24px; // safe 24px for toggle
     overflow: hidden;

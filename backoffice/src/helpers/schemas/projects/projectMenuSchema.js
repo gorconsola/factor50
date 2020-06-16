@@ -6,26 +6,29 @@ export default [
         icon: 'information-outline',
         label: 'Details',
         tag: 'router-link',
-        to: 'project-details',
+        to: 'details',
         exact: true
       },
       {
         icon: 'file-tree',
         label: 'Tasks',
         tag: 'router-link',
-        to: 'new-product-documents'
+        to: 'tasks',
+        exact: true
       },
       {
         icon: 'file-multiple-outline',
         label: 'Documents',
         tag: 'router-link',
-        to: 'new-product-documents'
+        to: 'documents',
+        exact: true
       },
       {
         icon: 'cloud-upload-outline',
         label: 'Publishing',
         tag: 'router-link',
-        to: 'new-product-publishing'
+        to: 'project-publishing',
+        exact: true
       }
     ]
   }

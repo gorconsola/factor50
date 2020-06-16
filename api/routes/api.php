@@ -34,15 +34,20 @@ Route::namespace('Backoffice')->group(function () {
         });
     });
 
-        Route::group(['middleware' => 'auth:api'], function(){
+    // AUTHENTICATED ROUTES
+    Route::group(['middleware' => 'auth:api'], function(){
 
-            Route::get('users', 'UserController@index')
-                ->middleware('isAdmin');
-            Route::get('users/{id}', 'UserController@show')
-                ->middleware('isAdminOrSelf');
-    
-            Route::resource('projects', 'ProjectController');
+        Route::get('users', 'UserController@index')
+            ->middleware('isAdmin');
+        Route::get('users/{id}', 'UserController@show')
+            ->middleware('isAdminOrSelf');
 
-        });
+        Route::resource('projects', 'ProjectController');
+        Route::resource('projects/{id}/tasks', 'TaskController');
+        Route::post('documents/upload', 'DocumentController@upload');
+    });
 
+    //UNAUTHENTICATED ROUTES
+    Route::get('documents/download/{folder}/{fileName}', 'DocumentController@download');
+    Route::resource('projects/{productId}/documents', 'ProjectDocumentController');
 });
