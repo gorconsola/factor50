@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Task;
 use App\Http\Resources\Tasks\TaskListingResource;
+use App\Http\Requests\Backoffice\TaskRequest;
 
 class TaskController extends Controller
 {
@@ -22,15 +23,6 @@ class TaskController extends Controller
         return TaskListingResource::collection($tasks);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -43,6 +35,7 @@ class TaskController extends Controller
         //
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -54,16 +47,6 @@ class TaskController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -72,9 +55,14 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TaskRequest $request, $projectId, $id)
     {
-        //
+        $validated = $request->validated();
+        $task = Task::findOrFail($id);
+        $task->fill($validated);
+        $task->save();
+
+        return $this->index($request, $projectId);
     }
 
     /**
