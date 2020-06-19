@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Filters\ProjectFilters;
-use App\Http\Requests\Backoffice\ProjectRequest;
+use App\Http\Requests\Backoffice\CreateProjectRequest;
 use App\Http\Resources\Projects\ProjectListingResourceCollection;
 use App\Http\Resources\Projects\ProjectDetailResource;
 
@@ -41,7 +41,7 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectRequest $request)
+    public function store(CreateProjectRequest $request)
     {
         $validated = $request->validated();
         $user = Auth::user();
@@ -75,9 +75,14 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectRequest $request, Project $project)
     {
+        // $validated = $request->validated();
 
+        // $project->fill($validated);
+        // $project->save();
+
+        // return new ProjectDetailResource($project);
     }
 
     /**
@@ -86,8 +91,10 @@ class ProjectController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy($id)
     {
-        //
+        Project::destroy($id);
+
+        return response()->json(['status' => 'success'], 200);
     }
 }

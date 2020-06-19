@@ -22,7 +22,7 @@
             :loading="loading"
             :show-delete="true"
             @reset="resetForm"
-            @remove="remove" />
+            @remove="handleRemove" />
 
         </template>
       </form-wrapper>
@@ -106,6 +106,12 @@ export default {
       Object.keys(formData).map(key => {
         this.$set(this.formData, key, formData[key])
       })
+    },
+    handleRemove () {
+      this.remove()
+        .then(() => {
+          this.$router.push({ name: 'projects' })
+        })
     },
     handleSuccess () {
       this.$buefy.toast.open({

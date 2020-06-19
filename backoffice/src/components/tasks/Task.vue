@@ -15,11 +15,19 @@
           </b-checkbox>
         </div>
 
-        <b-icon
-          class="toggle-icon"
-          @click.native="isOpen = !isOpen"
-          :icon="isOpen ? 'menu-down' : 'menu-up'">
-        </b-icon>
+        <div>
+          <b-icon
+            class="icon trash"
+            @click.native="deleteTask"
+            icon="trash-can-outline">
+          </b-icon>
+
+          <b-icon
+            class="icon"
+            @click.native="isOpen = !isOpen"
+            :icon="isOpen ? 'menu-down' : 'menu-up'">
+          </b-icon>
+        </div>
 
       </div>
       <b-collapse :open="isOpen" :aria-id="`contentForTask-${task.id}`">
@@ -52,6 +60,9 @@ export default {
       updatedTask.status = value
 
       this.$emit('update', updatedTask)
+    },
+    deleteTask () {
+      this.$emit('delete', this.task.id)
     }
   }
 }
@@ -63,15 +74,30 @@ export default {
     padding: 0;
     width: 100%;
 
+    &:hover {
+      background: whitesmoke;
+    }
+
     .header {
       width: 100%;
       display: flex;
       justify-content: space-between;
-      margin-top: 1.5em;
+      align-items: center;
+      padding: 0.5em;
+
+      .field {
+        margin: 0;
+      }
     }
 
-    .toggle-icon {
+    .icon {
       cursor: pointer;
+
+      &.trash {
+        &:hover {
+          color: tomato;
+        }
+      }
     }
  }
 </style>

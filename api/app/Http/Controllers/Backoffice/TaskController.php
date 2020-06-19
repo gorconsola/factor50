@@ -30,21 +30,13 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request, $projectId)
     {
-        //
-    }
+        $validated = $request->validated();
 
+        Task::create($validated);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return $this->index($request, $projectId);
     }
 
 
@@ -71,8 +63,10 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $projectId, $taskId)
     {
-        //
+        Task::destroy($taskId);
+
+        return $this->index($request, $projectId);
     }
 }

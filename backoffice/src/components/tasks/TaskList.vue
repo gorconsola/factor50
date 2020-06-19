@@ -5,7 +5,8 @@
       v-for="task in tasks"
       :key="task.id"
       :task="task"
-      @update="updateTask" />
+      @update="updateTask"
+      @delete="deleteTask" />
 
     <create-task
       @create="createTask" />
@@ -27,11 +28,14 @@ export default {
     }
   },
   methods: {
+    createTask (task) {
+      this.$emit('create', task)
+    },
     updateTask (task) {
       this.$emit('update', task)
     },
-    createTask (task) {
-      this.$emit('create', task)
+    deleteTask (taskId) {
+      this.$emit('delete', taskId)
     }
   }
 }

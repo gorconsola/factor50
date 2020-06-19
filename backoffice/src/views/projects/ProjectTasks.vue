@@ -4,7 +4,7 @@
       ref="crudWrapper"
       :endpoint="endpoint"
     >
-      <template slot-scope="{ loading, getAll, data, create }">
+      <template slot-scope="{ loading, getAll, data, create, remove }">
         <card title="Tasks">
           <template>
             <div>
@@ -13,7 +13,11 @@
                 :loading="false"
               >
 
-                <task-list :tasks="data" @create="create" @update="handleUpdate"/>
+                <task-list
+                  :tasks="data"
+                  @create="create"
+                  @update="update"
+                  @delete="remove" />
 
               </slot>
             </div>
@@ -50,7 +54,7 @@ export default {
     handleRouting ({ id }) {
       this.$router.push(`${this.$route.path}/${id}`)
     },
-    handleUpdate (task) {
+    update (task) {
       this.$refs.crudWrapper.update(task, task.id)
     }
   }

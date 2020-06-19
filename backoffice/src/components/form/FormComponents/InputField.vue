@@ -19,6 +19,7 @@
 
       <b-input
         v-validate="`${rules}`"
+        :id="reference"
         :name="name"
         :type="type"
         :value="value"
@@ -44,6 +45,7 @@ export default {
     'label',
     'type',
     'placeholder',
+    'reference',
     'horizontal',
     'rules',
     'classes'
