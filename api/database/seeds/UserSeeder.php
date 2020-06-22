@@ -20,10 +20,17 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Dinkie',
-            'email' => 'c.y.kroon+1@gmail.com',
+            'name' => 'Cor User',
+            'email' => 'c.y.kroon+user@gmail.com',
             'user_role_id' => 2,
             'password' => Hash::make('Secret'),
         ]);
+
+        User::create([
+            'name' => 'Sjoerd',
+            'email' => 'sjoerd_schouten@hotmail.com',
+            'user_role_id' => 1,
+            'password' => Hash::make('Factor50')
+        ])
     }
 }
