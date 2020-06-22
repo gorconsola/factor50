@@ -11,7 +11,7 @@ class ProjectFilters extends QueryFilters
 		$this->request = $request;
 		$this->filters = [
 			'order_by' => $this->orderBy(),
-			'name' => $this->searchFilter('name'),
+			'title' => $this->searchFilter('title'),
 			'status' => $this->enumFilter('status', array('open', 'closed')),
 		];
 	}

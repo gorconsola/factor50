@@ -41,7 +41,7 @@ export default {
   },
   computed: {
     pageTitle () {
-      return (this.project && this.project.name) || this.$route.params.projectId
+      return (this.project && this.project.title) || this.$route.params.projectId
     }
   },
   mounted () {
@@ -66,7 +66,7 @@ export default {
     setBreadcrumbs () {
       const breadcrumbs = [
         ['Projects', 'projects'],
-        [this.project.name, 'project-details']
+        [this.project.title, 'project-details']
       ]
 
       this.$store.commit('breadcrumbs/SET_BREADCRUMBS', breadcrumbs)

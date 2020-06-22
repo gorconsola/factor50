@@ -1,6 +1,12 @@
 <template>
   <li>
-    <b-button tag="a" v-if="!creating" @click="addNewTask">
+    <b-button
+      v-if="!creating"
+      @click="addNewTask"
+      tag="button"
+      native-type="button"
+      type="is-light"
+    >
       Add new task
     </b-button>
 
@@ -13,6 +19,16 @@
         v-model="formData"
         :schema="schema"
       />
+
+      <template v-slot:buttons>
+        <b-button
+          type="is-primary"
+          tag="input"
+          native-type="submit"
+        >
+          Create
+        </b-button>
+      </template>
 
     </form-wrapper>
   </li>

@@ -2,7 +2,7 @@
   <div :class="{'table-container': scrollable}">
     <table
       class="table"
-      :class="{'is-hoverable': hoverable && data.length, 'is-full': isFull}"
+      :class="{'is-hoverable': hoverable && data && data.length, 'is-full': isFull}"
     >
       <thead>
         <tr>
@@ -56,7 +56,7 @@
         </template>
 
         <slot
-          v-if="!data.length && !loading"
+          v-if="data && !data.length && !loading"
           name="empty"
         >
           <empty-table
@@ -77,8 +77,8 @@ export default {
   components: { EmptyTable },
   props: {
     data: {
-      type: [Array, Object],
-      required: true
+      required: true,
+      validate: (value) => ['array', 'undefined'].find(typeof value)
     },
     columns: {
       type: Array,

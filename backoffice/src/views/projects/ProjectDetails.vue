@@ -12,9 +12,8 @@
 
         <form-generator
           ref="formGenerator"
-          :value="formData"
-          :schema="projectDetailsSchema"
-          @input="updateFormData(formData)" />
+          :value.sync="formData"
+          :schema="projectDetailsSchema" />
 
         <template v-slot:buttons>
 
@@ -42,8 +41,8 @@ export default {
   name: 'ProjectDetail',
   props: {
     data: {
-      type: [Array, Object],
-      required: true
+      required: true,
+      validate: (value) => ['object', 'undefined'].find(typeof value)
     },
     meta: {
       type: [Array, Object],
@@ -75,7 +74,7 @@ export default {
   data () {
     return {
       projectDetailsSchema: projectDetailsSchema,
-      formData: this.data
+      formData: this.data || {}
     }
   },
   mounted () {
@@ -83,8 +82,6 @@ export default {
       this.read()
         .then(response => {
           this.updateFormData(response.data)
-
-          this.schema = response.meta.fields
         })
     }
   },

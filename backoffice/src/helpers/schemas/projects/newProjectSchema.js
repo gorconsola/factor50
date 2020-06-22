@@ -1,7 +1,7 @@
 export default [
   {
     fieldType: 'InputField',
-    name: 'name',
+    name: 'title',
     type: 'text',
     placeholder: 'VVE van Woustraat',
     label: 'Title',

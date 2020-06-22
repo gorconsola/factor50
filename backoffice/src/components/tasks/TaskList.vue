@@ -23,8 +23,8 @@ export default {
   components: { Task, CreateTask },
   props: {
     tasks: {
-      type: Array,
-      required: true
+      required: true,
+      validate: (value) => ['array', 'undefined'].find(typeof value)
     }
   },
   methods: {

@@ -24,7 +24,17 @@ class ProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'string|required',
+            'title' => 'string|required',
+            'first_name' => 'string|required',
+            'last_name' => 'string|required',
+            'email' => 'email|required',
+            'phone' => 'string|required',
+            'street' => 'string|required',
+            'house_number' => 'string|required',
+            'house_number_addition' => 'string|nullable',
+            'postal_code' => 'string|nullable',
+            'city' => 'string|nullable',
+            'country' => 'string|nullable',
         ];
     }
 }

@@ -11,7 +11,7 @@ class ProjectListingResource extends ListingResource
     {
         $this->columns = [
             $this->column('id'),
-            $this->column('name'),
+            $this->column('title'),
             $this->column('status', false)
         ];
 
@@ -29,7 +29,7 @@ class ProjectListingResource extends ListingResource
     {   
         return [
             'id' => $this->resource->id,
-            'name' => $this->resource->name,
+            'title' => $this->resource->title,
             'status' => $this->status
         ];
     }

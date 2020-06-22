@@ -18,6 +18,7 @@
         <div>
           <b-icon
             class="icon trash"
+            type="is-small"
             @click.native="deleteTask"
             icon="trash-can-outline">
           </b-icon>
@@ -33,7 +34,7 @@
       <b-collapse :open="isOpen" :aria-id="`contentForTask-${task.id}`">
         <div class="notification">
           <div class="content">
-            <p>{{ task.description }}</p>
+            <task-details :task="task" />
           </div>
         </div>
       </b-collapse>
@@ -41,8 +42,11 @@
 </template>
 
 <script>
+import TaskDetails from '@/components/tasks/TaskDetails.vue'
+
 export default {
   name: 'Task',
+  components: { TaskDetails },
   props: {
     task: {
       type: Object,

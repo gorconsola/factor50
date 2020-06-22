@@ -15,7 +15,7 @@ export default {
   },
   data () {
     return {
-      data: [],
+      data: undefined,
       columns: [],
       filters: {},
       meta: null,

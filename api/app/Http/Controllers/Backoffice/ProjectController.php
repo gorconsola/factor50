@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Filters\ProjectFilters;
+use App\Address;
 use App\Http\Requests\Backoffice\CreateProjectRequest;
+use App\Http\Requests\Backoffice\ProjectRequest;
 use App\Http\Resources\Projects\ProjectListingResourceCollection;
 use App\Http\Resources\Projects\ProjectDetailResource;
 
@@ -45,10 +47,12 @@ class ProjectController extends Controller
     {
         $validated = $request->validated();
         $user = Auth::user();
+        $address = Address::create();
 
         $project = new Project();
-        $project->name = $validated['name'];
+        $project->title = $validated['title'];
         $project->user_id = $user->id;
+        $project->address_id = $address->id;
         $project->save();
 
         return new ProjectDetailResource($project);
@@ -77,12 +81,15 @@ class ProjectController extends Controller
      */
     public function update(ProjectRequest $request, Project $project)
     {
-        // $validated = $request->validated();
+        $validated = $request->validated();
 
-        // $project->fill($validated);
-        // $project->save();
+        $project->title = $validated['title'];
+        $project->save();
+        
+        $project->address->fill($request->except(['id', 'address_id', 'title', 'status']));
+        $project->push();
 
-        // return new ProjectDetailResource($project);
+        return new ProjectDetailResource($project);
     }
 
     /**

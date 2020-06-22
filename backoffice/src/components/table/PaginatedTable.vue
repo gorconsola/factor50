@@ -4,7 +4,7 @@
       <h1>{{ title }}</h1>
 
       <pagination
-        v-if="data.length && meta"
+        v-if="data && data.length && meta"
         :meta="meta"
         page-count
         @update="handleUpdatePage" />
@@ -51,7 +51,7 @@
     </base-table>
 
     <div
-      v-if="data.length && meta"
+      v-if="data && data.length && meta"
       class="card-footer"
     >
 
@@ -81,8 +81,8 @@ export default {
   mixins: [QueryStringMixin],
   props: {
     data: {
-      type: [Array, Object],
-      required: true
+      required: true,
+      validate: (value) => ['array', 'undefined'].find(typeof value)
     },
     columns: {
       type: Array,

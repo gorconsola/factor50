@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="section form-section">
     <crud-wrapper
       ref="crudWrapper"
       :endpoint="endpoint"

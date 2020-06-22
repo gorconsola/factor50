@@ -2,10 +2,28 @@
 
 namespace App\Http\Resources\Projects;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Fields\ProjectDetailFields;
+use App\Http\Resources\DetailResource;
+use Arr;
 
-class ProjectDetailResource extends JsonResource
+class ProjectDetailResource extends DetailResource
 {
+    protected $fieldsToShow = [
+        'name',
+        'status',
+    ];
+
+    /**
+     * Create a new resource instance.
+     *
+     * @param  mixed  $resource
+     * @return void
+     */
+    public function __construct($resource)
+    {   
+        $this->resource = $resource;
+    }
+
     /**
      * Transform the resource into an array.
      *
@@ -14,19 +32,26 @@ class ProjectDetailResource extends JsonResource
      */
     public function toArray($request)
     {
+        $projectDetailFields = new ProjectDetailFields();
 
         $project = [
             'id' => $this->resource->id,
-            'name' => $this->resource->name,
+            'title' => $this->resource->title,
             'status' => $this->resource->status
         ];
 
-        if (isset($this->resources->address_id)) {
+        if (isset($this->resource->address_id)) {
             $address = $this->resource->address->toArray();
-            
+            $address = Arr::except($address, 'id', 'address_id');
+
             return array_merge($project, $address);
         }
 
-        return $project;
+        return [
+            'data' => $project,
+            'meta' => [
+                'fields' => $projectDetailFields->getFilteredFieldInfo($this->fieldsToShow)
+            ]
+        ];
     }
 }

@@ -57,3 +57,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .textarea {
+    &.is-rounded {
+      border-radius: 1em;
+    }
+  }
+</style>

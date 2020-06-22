@@ -45,13 +45,12 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/recommended",
       "@vue/standard"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {},
     "overrides": [
       {
         "files": [
@@ -62,7 +61,12 @@
           "jest": true
         }
       }
-    ]
+    ],
+    "rules": {
+      "vue/array-bracket-spacing": "error",
+      "vue/arrow-spacing": "error",
+      "vue/block-spacing": "error"
+    }
   },
   "browserslist": [
     "> 1%",

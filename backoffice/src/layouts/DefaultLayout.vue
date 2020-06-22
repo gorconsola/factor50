@@ -11,7 +11,9 @@
       <slot name="breadcrumbs">
         <bread-crumbs base-crumb="dashboard" />
       </slot>
-      <slot />
+      <div class="main-slot">
+        <slot />
+      </div>
     </main>
   </div>
 </template>
@@ -51,7 +53,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .default-layout {
   min-height: 100vh;
   background-color: #edf2f6;
@@ -66,8 +68,8 @@ export default {
     overflow: hidden;
 
     &.secondary-menu-active {
-      margin-left: calc(244px + 24px); // safe 24px for toggle
-      width: calc(100% - (244px + 24px));
+      margin-left: calc(224px + 24px); // safe 24px for toggle
+      width: calc(100% - (224px + 24px));
     }
 
     &.menu-open {
@@ -75,13 +77,17 @@ export default {
       width: calc(100% - 244px); // safe 24px for toggle
 
       &.secondary-menu-active {
-        width: calc(100% - 244px * 2); // safe 24px for toggle
-        margin-left: calc(244px * 2); // two menu's here!
+        width: calc(100% - 224px * 2); // safe 24px for toggle
+        margin-left: calc(224px * 2); // two menu's here!
       }
     }
 
     &.fixed-width {
       min-width: 100vw;
+    }
+
+    .form-section {
+      padding-top: 0;
     }
   }
 }
