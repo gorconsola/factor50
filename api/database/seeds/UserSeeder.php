@@ -31,6 +31,6 @@ class UserSeeder extends Seeder
             'email' => 'sjoerd_schouten@hotmail.com',
             'user_role_id' => 1,
             'password' => Hash::make('Factor50')
-        ])
+        ]);
     }
 }
