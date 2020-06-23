@@ -18,7 +18,7 @@ class ProjectSeeder extends Seeder
 
         for ($x = 0; $x <= 10; $x++) {
             DB::table('projects')->insert([
-                'name' => $faker->company,
+                'title' => $faker->company,
             	'user_id' => 1,
             	'address_id' => rand(1,10),
                 'safety_plan' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
