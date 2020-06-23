@@ -5,7 +5,7 @@ module.exports = {
   devServer: {
     port: 8081,
     allowedHosts: [
-      'factor50.chimp.website/api'
+      'factor50.chimp.website'
     ]
   },
 
