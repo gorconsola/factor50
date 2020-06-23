@@ -4,6 +4,7 @@ import AutoComplete from './AutoComplete'
 import FileUploadInput from './FileUploadInput'
 import SwitchField from './SwitchField'
 import MultiValueField from './MultiValueField'
+import DatePicker from './DatePicker'
 import Divider from './Divider'
 
 export default {
@@ -13,5 +14,6 @@ export default {
   FileUploadInput,
   SwitchField,
   MultiValueField,
-  Divider
+  DatePicker,
+  Divider,
 }

@@ -27,7 +27,7 @@ export default [
         icon: 'cloud-upload-outline',
         label: 'Publishing',
         tag: 'router-link',
-        to: 'project-publishing',
+        to: 'publishing',
         exact: true
       }
     ]

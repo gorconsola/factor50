@@ -40,6 +40,13 @@ export default [
         name: 'documents',
         component: () => import(/* webpackChunkName: "project-documents" */ '@/views/projects/ProjectDocuments.vue'),
         beforeEnter: (to, from, next) => authenticationGuard(to, from, next)
+      },
+
+      {
+        path: 'publishing',
+        name: 'publishing',
+        component: () => import(/* webpackChunkName: "project-documents" */ '@/views/projects/ProjectPublishing.vue'),
+        beforeEnter: (to, from, next) => authenticationGuard(to, from, next)
       }
     ]
   }

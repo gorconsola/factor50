@@ -1,17 +1,16 @@
 .form-elements {
-	.form-field {
+  .form-field {
+    &.is-light {
+      .label {
+        color: white;
+      }
+    }
 
-		&.is-light {
-			.label {
-				color: white;
-			}
-		}
-
-		&.is-danger {
-			box-shadow: inset 0 -1px 0 0 #EE2E24;
-		}
-	}
-	.label {
-		color: black;
-	}
+    &.is-danger {
+      box-shadow: inset 0 -1px 0 0 #EE2E24;
+    }
+  }
+  .label {
+    color: black;
+  }
 }

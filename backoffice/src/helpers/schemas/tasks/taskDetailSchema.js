@@ -16,5 +16,23 @@ export default [
     label: 'Description',
     rules: '',
     class: 'is-full'
+  },
+  {
+    fieldType: 'DatePicker',
+    name: 'start_date',
+    label: 'Start date',
+    type: 'is-primary',
+    inline: false,
+    rounded: true,
+    rules: ''
+  },
+  {
+    fieldType: 'DatePicker',
+    name: 'end_date',
+    label: 'End date',
+    type: 'is-primary',
+    inline: false,
+    rounded: true,
+    rules: ''
   }
 ]
